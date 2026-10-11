@@ -1,0 +1,1449 @@
+<!DOCTYPE html>
+<html lang="bn" class="scroll-smooth">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>BASIC TO BOSS - Professional Ed-Tech Platform</title>
+    <!-- Tailwind CSS -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    <!-- FontAwesome Icons -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <!-- Google Fonts: Hind Siliguri & Inter -->
+    <link href="https://fonts.googleapis.com/css2?family=Hind+Siliguri:wght@300;400;500;600;700&family=Inter:wght@300;400;600;700&display=swap" rel="stylesheet">
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    colors: {
+                        brand: {
+                            dark: '#0B132B',
+                            navy: '#1C2541',
+                            accent: '#3A506B',
+                            cyan: '#00F5D4',
+                            purple: '#7B2CBF',
+                            pink: '#F72585',
+                            gold: '#FFB703'
+                        }
+                    },
+                    fontFamily: {
+                        sans: ['Hind Siliguri', 'Inter', 'sans-serif'],
+                    }
+                }
+            }
+        }
+    </script>
+    <style>
+        body {
+            font-family: 'Hind Siliguri', 'Inter', sans-serif;
+            background-color: #070D1E;
+            color: #E2E8F0;
+        }
+        .glass-panel {
+            background: rgba(28, 37, 65, 0.75);
+            backdrop-filter: blur(12px);
+            border: 1px solid rgba(255, 255, 255, 0.08);
+        }
+        .glass-card {
+            background: rgba(15, 23, 42, 0.8);
+            backdrop-filter: blur(8px);
+            border: 1px solid rgba(255, 255, 255, 0.06);
+        }
+        .gradient-text {
+            background: linear-gradient(135deg, #00F5D4 0%, #7B2CBF 100%);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+        }
+        .gradient-gold {
+            background: linear-gradient(135deg, #FFB703 0%, #FB8500 100%);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+        }
+        .hover-quicklink {
+            position: relative;
+            transition: all 0.3s ease;
+        }
+        .hover-quicklink::after {
+            content: '';
+            position: absolute;
+            width: 0;
+            height: 2px;
+            bottom: -2px;
+            left: 0;
+            background-color: #00F5D4;
+            transition: width 0.3s ease;
+        }
+        .hover-quicklink:hover::after {
+            width: 100%;
+        }
+        .custom-scrollbar::-webkit-scrollbar {
+            width: 6px;
+            height: 6px;
+        }
+        .custom-scrollbar::-webkit-scrollbar-track {
+            background: #0B132B;
+        }
+        .custom-scrollbar::-webkit-scrollbar-thumb {
+            background: #3A506B;
+            border-radius: 4px;
+        }
+        .custom-scrollbar::-webkit-scrollbar-thumb:hover {
+            background: #00F5D4;
+        }
+    </style>
+</head>
+<body class="custom-scrollbar min-h-screen flex flex-col justify-between selection:bg-brand-cyan selection:text-brand-dark">
+
+    <!-- Navigation Bar -->
+    <header class="sticky top-0 z-50 glass-panel shadow-lg border-b border-white/10">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="flex items-center justify-between h-20">
+                
+                <!-- Logo -->
+                <a href="#home" class="flex items-center space-x-3 group">
+                    <div class="w-12 h-12 rounded-xl bg-gradient-to-tr from-brand-cyan to-brand-purple flex items-center justify-center text-brand-dark font-extrabold text-2xl shadow-lg shadow-brand-cyan/20 transform group-hover:rotate-6 transition duration-300">
+                        BB
+                    </div>
+                    <div>
+                        <span class="text-2xl font-black tracking-wider text-white block leading-tight">BASIC TO <span class="text-brand-cyan">BOSS</span></span>
+                        <span class="text-xs text-gray-400 tracking-widest block font-medium">LEARN & MASTER</span>
+                    </div>
+                </a>
+
+                <!-- Desktop Nav Links -->
+                <nav class="hidden lg:flex items-center space-x-1 xl:space-x-2 text-sm font-semibold">
+                    <a href="#home" class="px-3 py-2 rounded-lg text-gray-200 hover:text-brand-cyan hover:bg-white/5 transition">হোম</a>
+                    <a href="#founder" class="px-3 py-2 rounded-lg text-gray-200 hover:text-brand-cyan hover:bg-white/5 transition">প্রতিষ্ঠাতা</a>
+                    <a href="#paid-courses" class="px-3 py-2 rounded-lg text-gray-200 hover:text-brand-cyan hover:bg-white/5 transition">পেইড কোর্স</a>
+                    <a href="#recorded-classes" class="px-3 py-2 rounded-lg text-gray-200 hover:text-brand-cyan hover:bg-white/5 transition">রেকর্ডেড ক্লাস</a>
+                    <a href="#class-notes" class="px-3 py-2 rounded-lg text-gray-200 hover:text-brand-cyan hover:bg-white/5 transition">ক্লাস নোটস</a>
+                    <a href="#free-classes" class="px-3 py-2 rounded-lg text-brand-cyan hover:bg-brand-cyan/10 transition border border-brand-cyan/30">ফ্রি ক্লাস</a>
+                    <a href="#contact" class="px-3 py-2 rounded-lg text-gray-200 hover:text-brand-cyan hover:bg-white/5 transition">যোগাযোগ</a>
+                </nav>
+
+                <!-- Action Buttons & Mobile Toggle -->
+                <div class="flex items-center space-x-2 sm:space-x-3">
+                    <button onclick="openStudentPanel()" id="navStudentBtn" class="hidden sm:inline-flex items-center bg-slate-800 text-brand-cyan border border-brand-cyan/40 px-3.5 py-2 rounded-xl text-xs font-bold hover:bg-brand-cyan hover:text-brand-dark transition">
+                        <i class="fa-solid fa-graduation-cap mr-1.5"></i> স্টুডেন্ট প্যানেল
+                    </button>
+
+                    <button onclick="openAuthModal()" id="navAuthBtn" class="bg-gradient-to-r from-brand-cyan to-teal-400 text-brand-dark px-3.5 py-2 rounded-xl font-bold text-xs sm:text-sm hover:shadow-lg hover:shadow-brand-cyan/20 transition transform hover:-translate-y-0.5">
+                        <i class="fa-solid fa-user-plus mr-1"></i> লগইন / রেজিস্টার
+                    </button>
+                    
+                    <button onclick="openAdminModal()" class="bg-slate-800 text-brand-cyan border border-brand-cyan/40 p-2.5 rounded-xl hover:bg-brand-cyan hover:text-brand-dark transition" title="অ্যাডমিন প্যানেল">
+                        <i class="fa-solid fa-user-shield text-base sm:text-lg"></i>
+                    </button>
+
+                    <!-- Mobile Menu Button (Three-dot / Hamburger) -->
+                    <button id="mobileMenuBtn" onclick="toggleMobileMenu()" class="lg:hidden p-2 rounded-xl text-gray-300 hover:text-white hover:bg-white/10 focus:outline-none">
+                        <i class="fa-solid fa-ellipsis-vertical text-2xl"></i>
+                    </button>
+                </div>
+            </div>
+        </div>
+
+        <!-- Mobile Drawer Menu -->
+        <div id="mobileDrawer" class="hidden lg:hidden glass-panel border-t border-white/10 px-4 pt-3 pb-6 space-y-2">
+            <a href="#home" onclick="toggleMobileMenu()" class="block px-4 py-2.5 rounded-lg text-gray-200 hover:bg-white/10 font-medium"><i class="fa-solid fa-house mr-2 text-brand-cyan"></i> হোম</a>
+            <a href="#founder" onclick="toggleMobileMenu()" class="block px-4 py-2.5 rounded-lg text-gray-200 hover:bg-white/10 font-medium"><i class="fa-solid fa-user-tie mr-2 text-brand-cyan"></i> প্রতিষ্ঠাতা</a>
+            <a href="#paid-courses" onclick="toggleMobileMenu()" class="block px-4 py-2.5 rounded-lg text-gray-200 hover:bg-white/10 font-medium"><i class="fa-solid fa-graduation-cap mr-2 text-brand-cyan"></i> পেইড কোর্স</a>
+            <a href="#recorded-classes" onclick="toggleMobileMenu()" class="block px-4 py-2.5 rounded-lg text-gray-200 hover:bg-white/10 font-medium"><i class="fa-solid fa-circle-play mr-2 text-brand-cyan"></i> রেকর্ডড ক্লাস</a>
+            <a href="#class-notes" onclick="toggleMobileMenu()" class="block px-4 py-2.5 rounded-lg text-gray-200 hover:bg-white/10 font-medium"><i class="fa-solid fa-file-lines mr-2 text-brand-cyan"></i> ক্লাস নোটস</a>
+            <a href="#free-classes" onclick="toggleMobileMenu()" class="block px-4 py-2.5 rounded-lg text-brand-cyan font-bold bg-brand-cyan/10"><i class="fa-solid fa-gift mr-2"></i> ফ্রি ক্লাস</a>
+            <button onclick="toggleMobileMenu(); openStudentPanel();" class="w-full text-left px-4 py-2.5 rounded-lg text-gray-200 hover:bg-white/10 font-medium"><i class="fa-solid fa-id-card mr-2 text-brand-cyan"></i> স্টুডেন্ট ড্যাশবোর্ড</button>
+            <a href="#contact" onclick="toggleMobileMenu()" class="block px-4 py-2.5 rounded-lg text-gray-200 hover:bg-white/10 font-medium"><i class="fa-solid fa-envelope mr-2 text-brand-cyan"></i> যোগাযোগ</a>
+        </div>
+    </header>
+
+    <!-- MAIN CONTENT WRAPPER -->
+    <main class="flex-grow">
+
+        <!-- Hero Section -->
+        <section id="home" class="relative py-16 lg:py-24 overflow-hidden">
+            <div class="absolute -top-32 -left-32 w-96 h-96 bg-brand-purple/30 rounded-full blur-3xl pointer-events-none"></div>
+            <div class="absolute top-1/2 right-0 w-96 h-96 bg-brand-cyan/20 rounded-full blur-3xl pointer-events-none"></div>
+            
+            <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
+                <div class="grid grid-cols-1 lg:grid-cols-2 gap-12 items-center">
+                    <div class="space-y-6 text-center lg:text-left">
+                        <div class="inline-flex items-center space-x-2 px-4 py-2 rounded-full glass-card border border-brand-cyan/30 text-brand-cyan text-sm font-semibold animate-pulse">
+                            <i class="fa-solid fa-sparkles"></i>
+                            <span>বাংলাদেশের সেরা অনলাইন লার্নিং প্ল্যাটফর্ম</span>
+                        </div>
+                        <h1 class="text-4xl sm:text-5xl xl:text-6xl font-black text-white leading-tight">
+                            ভীতি দূর করে <br>
+                            <span class="gradient-text">BASIC TO BOSS</span> হও!
+                        </h1>
+                        <p class="text-gray-300 text-lg max-w-xl mx-auto lg:mx-0 font-normal leading-relaxed">
+                            Class 5 থেকে শুরু করে Admission পরীক্ষার্থী পর্যন্ত - প্রতিটি বিষয়ের ফান্ডামেন্টাল ক্লিয়ার করে সর্বোচ্চ প্রস্তুতি নিশ্চিত করতে আমরা আছি তোমার সাথে।
+                        </p>
+                        <div class="flex flex-wrap items-center justify-center lg:justify-start gap-4 pt-2">
+                            <a href="#paid-courses" class="bg-gradient-to-r from-brand-cyan to-teal-400 text-brand-dark px-8 py-4 rounded-xl font-bold text-lg hover:shadow-xl hover:shadow-brand-cyan/30 transition transform hover:-translate-y-1">
+                                কোর্সগুলো দেখুন <i class="fa-solid fa-arrow-right ml-2"></i>
+                            </a>
+                            <a href="#free-classes" class="glass-card text-white px-8 py-4 rounded-xl font-bold text-lg hover:border-brand-cyan border border-white/10 transition">
+                                ফ্রি ডেমো ক্লাস <i class="fa-solid fa-play ml-2 text-brand-cyan"></i>
+                            </a>
+                        </div>
+
+                        <!-- Stats Box -->
+                        <div class="grid grid-cols-3 gap-4 pt-8 border-t border-white/10">
+                            <div>
+                                <h3 class="text-2xl sm:text-3xl font-extrabold text-white">10K+</h3>
+                                <p class="text-xs sm:text-sm text-gray-400">সন্তুষ্ট শিক্ষার্থী</p>
+                            </div>
+                            <div>
+                                <h3 class="text-2xl sm:text-3xl font-extrabold text-brand-cyan">98%</h3>
+                                <p class="text-xs sm:text-sm text-gray-400">সফলতার হার</p>
+                            </div>
+                            <div>
+                                <h3 class="text-2xl sm:text-3xl font-extrabold text-brand-gold">50+</h3>
+                                <p class="text-xs sm:text-sm text-gray-400">এক্সক্লুসিভ লেকচার</p>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Banner / Visual -->
+                    <div class="relative flex justify-center">
+                        <div class="w-full max-w-lg glass-panel p-6 rounded-3xl shadow-2xl relative border border-white/10">
+                            <div class="relative rounded-2xl overflow-hidden aspect-video shadow-inner bg-slate-900 border border-white/10 flex items-center justify-center">
+                                <img src="https://images.unsplash.com/photo-1522202176988-66273c2fd55f?auto=format&fit=crop&w=800&q=80" alt="Students Learning" class="w-full h-full object-cover opacity-80">
+                                <a href="#free-classes" class="absolute w-16 h-16 bg-brand-cyan/90 rounded-full flex items-center justify-center text-brand-dark text-2xl shadow-lg hover:scale-110 transition">
+                                    <i class="fa-solid fa-play ml-1"></i>
+                                </a>
+                            </div>
+                            <div class="mt-6 flex items-center justify-between">
+                                <div class="flex items-center space-x-3">
+                                    <div class="w-10 h-10 rounded-full bg-brand-purple flex items-center justify-center text-white font-bold">
+                                        <i class="fa-solid fa-chalkboard-user"></i>
+                                    </div>
+                                    <div>
+                                        <h4 class="text-white font-bold text-sm">লাইভ ও রেকর্ডেড ক্লাস</h4>
+                                        <p class="text-xs text-gray-400">যে কোনো সময়, যে কোনো স্থান থেকে</p>
+                                    </div>
+                                </div>
+                                <span class="text-xs bg-emerald-500/20 text-emerald-400 px-3 py-1 rounded-full border border-emerald-500/30 font-semibold">Active</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Founder Section (প্রতিষ্ঠাতা) - PLACED DIRECTLY BELOW HERO -->
+        <section id="founder" class="py-16 relative bg-slate-950/40 border-y border-white/5">
+            <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+                <div class="glass-panel rounded-3xl p-8 lg:p-12 border border-brand-cyan/30 relative overflow-hidden shadow-2xl">
+                    <div class="grid grid-cols-1 lg:grid-cols-12 gap-8 items-center">
+                        
+                        <!-- Founder Image -->
+                        <div class="lg:col-span-5 flex justify-center">
+                            <div class="relative group">
+                                <div class="absolute -inset-1 bg-gradient-to-r from-brand-cyan to-brand-purple rounded-3xl blur opacity-75 group-hover:opacity-100 transition duration-500"></div>
+                                <div class="relative w-72 h-80 sm:w-80 sm:h-96 rounded-2xl overflow-hidden bg-slate-800 border-2 border-white/20">
+                                    <img src="825266685_2283351152515319_4637223067698616491_n (2).jpg" alt="Abdullah Al Naim - Founder" class="w-full h-full object-cover">
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- Founder Info -->
+                        <div class="lg:col-span-7 space-y-5">
+                            <div class="inline-flex items-center space-x-2 bg-brand-cyan/10 border border-brand-cyan/30 px-3.5 py-1.5 rounded-full text-brand-cyan text-xs sm:text-sm font-semibold">
+                                <i class="fa-solid fa-user-graduate"></i>
+                                <span>প্রতিষ্ঠাতা ও প্রধান মেন্টর</span>
+                            </div>
+
+                            <h2 class="text-3xl sm:text-4xl font-black text-white">আব্দুল্লাহ আল নাঈম <span class="text-sm font-normal text-gray-400 block sm:inline sm:ml-2">(Abdullah Al Naim)</span></h2>
+                            
+                            <div class="flex items-center space-x-2 text-brand-cyan font-bold text-base sm:text-lg">
+                                <i class="fa-solid fa-wheat-awn text-brand-gold"></i>
+                                <span>কৃষি অনুষদ, হাজী মোহাম্মদ দানেশ বিজ্ঞান ও প্রযুক্তি বিশ্ববিদ্যালয় (HSTU)</span>
+                            </div>
+
+                            <p class="text-gray-300 leading-relaxed text-sm sm:text-base">
+                                দীর্ঘ ৪+ বছরের শিক্ষাদানের অভিজ্ঞতায় হাজারো শিক্ষার্থীকে সহজ টেকনিক ও ফান্ডামেন্টাল বেসিক স্ট্রং করার মাধ্যমে কাঙ্ক্ষিত লক্ষ্য অর্জনে সাহায্য করে আসছি। কঠিন বিষয়কে সহজ ও আকর্ষণীয় করে তোলাই আমাদের মূল লক্ষ্য।
+                            </p>
+
+                            <div class="grid grid-cols-2 sm:grid-cols-3 gap-3 pt-2">
+                                <div class="glass-card p-3.5 rounded-xl border border-white/5">
+                                    <h5 class="text-brand-cyan font-bold text-base sm:text-lg">৪+ বছর</h5>
+                                    <p class="text-xs text-gray-400">টিচিং এক্সপেরিয়েন্স</p>
+                                </div>
+                                <div class="glass-card p-3.5 rounded-xl border border-white/5">
+                                    <h5 class="text-brand-cyan font-bold text-base sm:text-lg">১০,০০+</h5>
+                                    <p class="text-xs text-gray-400">মেন্টরশিপ প্রাপ্ত ছাত্র</p>
+                                </div>
+                                <div class="glass-card p-3.5 rounded-xl border border-white/5 col-span-2 sm:col-span-1">
+                                    <h5 class="text-brand-cyan font-bold text-base sm:text-lg">HSTU Ag</h5>
+                                    <p class="text-xs text-gray-400">কৃষি অনুষদ</p>
+                                    <div class="glass-card p-3.5 rounded-xl border border-white/5 col-span-2 sm:col-span-1">
+                                    <h5 class="text-brand-cyan font-bold text-base sm:text-lg">Former Teacher</h5>
+                                    <p class="text-xs text-gray-400">Dream care coaching center</p>
+                                </div>
+                            </div>
+
+                            <div class="pt-3 flex flex-wrap gap-4">
+                                <button onclick="openCvModal()" class="bg-gradient-to-r from-brand-cyan to-teal-400 text-brand-dark px-6 py-3 rounded-xl font-bold text-sm hover:shadow-lg transition flex items-center space-x-2">
+                                    <i class="fa-solid fa-file-pdf"></i>
+                                    <span>প্রতিষ্ঠাতার CV / বায়োডাটা দেখুন</span>
+                                </button>
+                            </div>
+                        </div>
+
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Paid Course Section -->
+        <section id="paid-courses" class="py-20 relative">
+            <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+                <div class="text-center max-w-3xl mx-auto mb-16">
+                    <h2 class="text-3xl sm:text-4xl font-extrabold text-white mb-4">আমাদের <span class="gradient-text">পেইড কোর্সসমূহ</span></h2>
+                    <p class="text-gray-400">তোমার লক্ষ্য অনুযায়ী বেছে নাও সেরা কোর্স এবং পড়াশোনায় অন্যদের থেকে এগিয়ে থাকো।</p>
+                    
+                    <!-- Course Category Tabs -->
+                    <div class="flex flex-wrap justify-center gap-2 sm:gap-4 mt-8">
+                        <button onclick="filterCourses('all')" class="course-tab-btn active bg-brand-cyan text-brand-dark font-bold px-5 py-2.5 rounded-xl transition text-sm">সকল কোর্স</button>
+                        <button onclick="filterCourses('class5-8')" class="course-tab-btn glass-card text-gray-300 font-bold px-5 py-2.5 rounded-xl hover:text-white hover:border-brand-cyan transition text-sm">Class 5-8</button>
+                        <button onclick="filterCourses('ssc')" class="course-tab-btn glass-card text-gray-300 font-bold px-5 py-2.5 rounded-xl hover:text-white hover:border-brand-cyan transition text-sm">SSC Course</button>
+                        <button onclick="filterCourses('hsc')" class="course-tab-btn glass-card text-gray-300 font-bold px-5 py-2.5 rounded-xl hover:text-white hover:border-brand-cyan transition text-sm">HSC Course</button>
+                        <button onclick="filterCourses('admission')" class="course-tab-btn glass-card text-gray-300 font-bold px-5 py-2.5 rounded-xl hover:text-white hover:border-brand-cyan transition text-sm">Admission</button>
+                    </div>
+                </div>
+
+                <!-- Course Grid -->
+                <div id="courseContainer" class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-8">
+                    <!-- Dynamic Courses populated via JS -->
+                </div>
+            </div>
+        </section>
+
+        <!-- Recorded Class Section -->
+        <section id="recorded-classes" class="py-20 bg-slate-950/60 relative border-t border-white/5">
+            <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+                <div class="flex flex-col md:flex-row md:items-end justify-between mb-12">
+                    <div>
+                        <h2 class="text-3xl font-extrabold text-white">রেকর্ডেড <span class="text-brand-cyan">ক্লাসসমূহ</span></h2>
+                        <p class="text-gray-400 mt-2">বিষয় ও অধ্যায় ভিত্তিক ইউটিউব ও প্রিমিয়াম ভিডিও টিউটোরিয়াল</p>
+                    </div>
+
+                    <!-- Subject Filters -->
+                    <div class="mt-6 md:mt-0 flex flex-wrap gap-3">
+                        <select id="recSubjectFilter" onchange="renderRecordedClasses()" class="glass-card text-white px-4 py-2.5 rounded-xl border border-white/10 focus:border-brand-cyan text-sm outline-none">
+                            <option value="all">সকল বিষয় (Subject)</option>
+                            <option value="physics">পদার্থবিজ্ঞান (Physics)</option>
+                            <option value="chemistry">রসায়ন (Chemistry)</option>
+                            <option value="math">উচ্চতর গণিত (Math)</option>
+                            <option value="agriculture">কৃষি বিজ্ঞান (Agri Science)</option>
+                            <option value="english">English Master Class</option>
+                        </select>
+                    </div>
+                </div>
+
+                <!-- Recorded Class Grid -->
+                <div id="recordedClassGrid" class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+                    <!-- Dynamic Video Cards -->
+                </div>
+            </div>
+        </section>
+
+        <!-- Class Notes Section -->
+        <section id="class-notes" class="py-20 relative">
+            <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+                <div class="text-center max-w-2xl mx-auto mb-12">
+                    <h2 class="text-3xl font-extrabold text-white">এক্সক্লুসিভ <span class="gradient-gold">ক্লাস নোটস & PDF</span></h2>
+                    <p class="text-gray-400 mt-2">পরীক্ষায় শতভাগ কমন উপযোগী হ্যান্ডরাইটিং নোট ও লেকচার শিট</p>
+                </div>
+
+                <!-- Notes Container -->
+                <div id="notesContainer" class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+                    <!-- Dynamic PDF Note Cards -->
+                </div>
+            </div>
+        </section>
+
+        <!-- Free Class Section Highlighted -->
+        <section id="free-classes" class="py-20 relative overflow-hidden bg-gradient-to-br from-brand-navy via-slate-900 to-brand-purple/40 border-y border-brand-cyan/20">
+            <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+                <div class="text-center max-w-3xl mx-auto mb-12">
+                    <span class="bg-brand-cyan text-brand-dark font-extrabold px-4 py-1.5 rounded-full text-xs uppercase tracking-widest shadow-lg shadow-brand-cyan/20">ফ্রি ডেমো ভিডিও</span>
+                    <h2 class="text-3xl sm:text-5xl font-black text-white mt-4">সম্পূর্ণ <span class="text-brand-cyan">ফ্রি ক্লাস</span> সেকশন</h2>
+                    <p class="text-gray-300 mt-3 text-lg">ভর্তির আগেই ক্লাসের মান যাচাই করতে দেখে নাও আমাদের সম্পূর্ণ ফ্রি লেকচারসমূহ।</p>
+                </div>
+
+                <div id="freeClassGrid" class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+                    <!-- Dynamic Free Videos -->
+                </div>
+            </div>
+        </section>
+
+        <!-- Contact & FAQ Section (যোগাযোগ) -->
+        <section id="contact" class="py-20 bg-slate-950/80 relative border-t border-white/10">
+            <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+                
+                <div class="text-center max-w-2xl mx-auto mb-16">
+                    <h2 class="text-3xl font-extrabold text-white">যোগাযোগ ও <span class="text-brand-cyan">সাধারণ জিজ্ঞাসা</span></h2>
+                    <p class="text-gray-400 mt-2">যেকোনো প্রশ্ন বা তথ্যের জন্য সরাসরি আমাদের সাথে যোগাযোগ করুন</p>
+                </div>
+
+                <div class="grid grid-cols-1 lg:grid-cols-12 gap-12">
+                    
+                    <!-- FAQ Accordion -->
+                    <div class="lg:col-span-6 space-y-4">
+                        <h3 class="text-xl font-bold text-white mb-6 flex items-center">
+                            <i class="fa-solid fa-circle-question text-brand-cyan mr-3"></i> সচরাচর জিজ্ঞাসিত প্রশ্নাবলী (FAQ)
+                        </h3>
+
+                        <!-- FAQ Items -->
+                        <div class="glass-card rounded-xl overflow-hidden border border-white/10">
+                            <button onclick="toggleFaq('faq1')" class="w-full p-4 text-left font-semibold text-white flex justify-between items-center bg-white/5 hover:bg-white/10 transition">
+                                <span>কোর্সে কিভাবে ভর্তি হবো?</span>
+                                <i id="icon-faq1" class="fa-solid fa-chevron-down text-brand-cyan"></i>
+                            </button>
+                            <div id="faq1" class="hidden p-4 text-sm text-gray-300 border-t border-white/5 leading-relaxed">
+                                কোর্স অপশনে গিয়ে আপনার পছন্দের কোর্সের 'ভর্তি হন' বাটনে ক্লিক করুন। নির্দেশিত বিকাশ/নগদ/রকেট নম্বরে সেন্ড মানি করে Transaction ID দিয়ে ফর্মটি সাবমিট করুন। অ্যাডমিন প্যানেল থেকে অতি দ্রুত নিশ্চিত করা হবে।
+                            </div>
+                        </div>
+
+                        <div class="glass-card rounded-xl overflow-hidden border border-white/10">
+                            <button onclick="toggleFaq('faq2')" class="w-full p-4 text-left font-semibold text-white flex justify-between items-center bg-white/5 hover:bg-white/10 transition">
+                                <span>রেকর্ডেড ক্লাস কি পরে দেখা যাবে?</span>
+                                <i id="icon-faq2" class="fa-solid fa-chevron-down text-brand-cyan"></i>
+                            </button>
+                            <div id="faq2" class="hidden p-4 text-sm text-gray-300 border-t border-white/5 leading-relaxed">
+                                হ্যাঁ, স্টুডেন্ট প্যানেলে লগইন করে যেকোনো সময় যতবার ইচ্ছা রেকর্ডেড ভিডিও ও লেকচার নোটস অ্যাক্সেস করতে পারবেন।
+                            </div>
+                        </div>
+
+                        <div class="glass-card rounded-xl overflow-hidden border border-white/10">
+                            <button onclick="toggleFaq('faq3')" class="w-full p-4 text-left font-semibold text-white flex justify-between items-center bg-white/5 hover:bg-white/10 transition">
+                                <span>পেমেন্ট নিশ্চিত হতে কত সময় লাগে?</span>
+                                <i id="icon-faq3" class="fa-solid fa-chevron-down text-brand-cyan"></i>
+                            </button>
+                            <div id="faq3" class="hidden p-4 text-sm text-gray-300 border-t border-white/5 leading-relaxed">
+                                সাধারণত ট্রানজেকশন আইডি সাবমিট করার ১০ থেকে ৩০ মিনিটের মধ্যে অ্যাডমিন প্যানেল থেকে কোর্স আনলক করে দেওয়া হয়।
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Direct Query / Contact Form linked to abdullahalnaim453@gmail.com -->
+                    <div class="lg:col-span-6">
+                        <div class="glass-panel p-8 rounded-2xl border border-white/10">
+                            <h3 class="text-xl font-bold text-white mb-2 flex items-center">
+                                <i class="fa-solid fa-paper-plane text-brand-cyan mr-3"></i> সরাসরি বার্তা পাঠান
+                            </h3>
+                            <p class="text-xs text-gray-400 mb-6">আপনার মেসেজটি সরাসরি <span class="text-brand-cyan font-semibold">abdullahalnaim453@gmail.com</span> এ ইমেইল হয়ে যাবে।</p>
+
+                            <form action="https://formspree.io/f/abdullahalnaim453@gmail.com" method="POST" onsubmit="handleQuerySubmit(event)" class="space-y-4">
+                                <input type="hidden" name="_to" value="abdullahalnaim453@gmail.com">
+                                <div>
+                                    <label class="block text-xs font-semibold text-gray-300 mb-1">আপনার নাম</label>
+                                    <input type="text" name="name" id="queryName" required placeholder="মোঃ সাকিল আহমেদ" class="w-full glass-card px-4 py-3 rounded-xl text-white text-sm border border-white/10 focus:border-brand-cyan outline-none">
+                                </div>
+                                <div>
+                                    <label class="block text-xs font-semibold text-gray-300 mb-1">ইমেইল / মোবাইল নম্বর</label>
+                                    <input type="text" name="contact" id="queryContact" required placeholder="01571513815" class="w-full glass-card px-4 py-3 rounded-xl text-white text-sm border border-white/10 focus:border-brand-cyan outline-none">
+                                </div>
+                                <div>
+                                    <label class="block text-xs font-semibold text-gray-300 mb-1">আপনার প্রশ্ন/বার্তা</label>
+                                    <textarea name="message" id="queryMessage" rows="4" required placeholder="আপনার যেকোনো প্রশ্ন বিস্তারিত লিখুন..." class="w-full glass-card px-4 py-3 rounded-xl text-white text-sm border border-white/10 focus:border-brand-cyan outline-none"></textarea>
+                                </div>
+                                <button type="submit" class="w-full bg-gradient-to-r from-brand-cyan to-teal-400 text-brand-dark py-3.5 rounded-xl font-bold hover:shadow-lg hover:shadow-brand-cyan/20 transition">
+                                    মেসেজ পাঠান <i class="fa-solid fa-paper-plane ml-2"></i>
+                                </button>
+                            </form>
+                        </div>
+                    </div>
+
+                </div>
+
+                <!-- Highlighted Social Media Cards -->
+                <div class="mt-16 pt-12 border-t border-white/10">
+                    <h3 class="text-center font-extrabold text-2xl text-white mb-8">আমাদের সামাজিক মাধ্যমে যুক্ত থাকুন</h3>
+                    <div class="grid grid-cols-1 md:grid-cols-3 gap-6">
+                        <!-- Facebook -->
+                        <a href="https://www.facebook.com/profile.php?id=61585741245438&sk=directory_links" target="_blank" class="glass-card p-6 rounded-2xl flex items-center space-x-4 border border-blue-500/30 hover:border-blue-500 transition group hover:-translate-y-1">
+                            <div class="w-14 h-14 rounded-xl bg-blue-600/20 text-blue-500 flex items-center justify-center text-3xl group-hover:bg-blue-600 group-hover:text-white transition">
+                                <i class="fa-brands fa-facebook-f"></i>
+                            </div>
+                            <div>
+                                <h4 class="text-white font-bold text-lg">Facebook Page</h4>
+                                <p class="text-xs text-gray-400">লাইভ ক্লাস ও আপডেট পেতে</p>
+                            </div>
+                        </a>
+
+                        <!-- YouTube -->
+                        <a href="https://youtu.be/IqDzPtDjnF0?si=agmgpwHkDPRm2MVP" target="_blank" class="glass-card p-6 rounded-2xl flex items-center space-x-4 border border-red-500/30 hover:border-red-500 transition group hover:-translate-y-1">
+                            <div class="w-14 h-14 rounded-xl bg-red-600/20 text-red-500 flex items-center justify-center text-3xl group-hover:bg-red-600 group-hover:text-white transition">
+                                <i class="fa-brands fa-youtube"></i>
+                            </div>
+                            <div>
+                                <h4 class="text-white font-bold text-lg">YouTube Channel</h4>
+                                <p class="text-xs text-gray-400">ফ্রি লেকচার টিউটোরিয়াল</p>
+                            </div>
+                        </a>
+
+                        <!-- WhatsApp -->
+                        <a href="https://wa.me/8801571513815" target="_blank" class="glass-card p-6 rounded-2xl flex items-center space-x-4 border border-emerald-500/30 hover:border-emerald-500 transition group hover:-translate-y-1">
+                            <div class="w-14 h-14 rounded-xl bg-emerald-600/20 text-emerald-500 flex items-center justify-center text-3xl group-hover:bg-emerald-600 group-hover:text-white transition">
+                                <i class="fa-brands fa-whatsapp"></i>
+                            </div>
+                            <div>
+                                <h4 class="text-white font-bold text-lg">WhatsApp Helpline</h4>
+                                <p class="text-xs text-gray-400">01571513815 - সরাসরি সাপোর্ট</p>
+                            </div>
+                        </a>
+                    </div>
+                </div>
+
+                <!-- Google Maps Container -->
+                <div class="mt-12 rounded-2xl overflow-hidden glass-card border border-white/10 p-2 h-80">
+                    <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3597.89201970222!2d88.63660507538967!3d25.641699977428827!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x39fb52912384a515%3A0xe543b573f0be712c!2sHajee%20Mohammad%20Danesh%20Science%20%26%20Technology%20University!5e0!3m2!1sen!2sbd!4v1710000000000!5m2!1sen!2sbd" class="w-full h-full rounded-xl border-0" allowfullscreen="" loading="lazy"></iframe>
+                </div>
+
+            </div>
+        </section>
+
+    </main>
+
+    <!-- FOOTER BOTTOM INFO WITH HOVER EFFECTS -->
+    <footer class="bg-black/95 border-t border-white/10 pt-12 pb-8">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            
+            <div class="grid grid-cols-1 md:grid-cols-4 gap-8 pb-10 border-b border-white/10">
+                <!-- Brand Info -->
+                <div class="md:col-span-1 space-y-3">
+                    <div class="flex items-center space-x-2">
+                        <div class="w-10 h-10 rounded-lg bg-gradient-to-tr from-brand-cyan to-brand-purple flex items-center justify-center text-brand-dark font-black text-xl">
+                            BB
+                        </div>
+                        <span class="text-xl font-black text-white">BASIC TO <span class="text-brand-cyan">BOSS</span></span>
+                    </div>
+                    <p class="text-xs text-gray-400 leading-relaxed">
+                        একটি নির্ভরযোগ্য এডটেক প্ল্যাটফর্ম। প্রতিষ্ঠাতা: আব্দুল্লাহ আল নাঈম (কৃষি অনুষদ, হাবিপ্রবি)।
+                    </p>
+                </div>
+
+                <!-- Quick Links -->
+                <div>
+                    <h4 class="text-white font-bold text-sm mb-3">কুইক লিঙ্কস</h4>
+                    <ul class="space-y-2 text-xs text-gray-400">
+                        <li><a href="#home" class="hover-quicklink hover:text-brand-cyan">হোম পেজ</a></li>
+                        <li><a href="#founder" class="hover-quicklink hover:text-brand-cyan">প্রতিষ্ঠাতা পরিচিতি</a></li>
+                        <li><a href="#paid-courses" class="hover-quicklink hover:text-brand-cyan">সকল পেইড কোর্স</a></li>
+                        <li><a href="#recorded-classes" class="hover-quicklink hover:text-brand-cyan">রেকর্ডেড লেকচার</a></li>
+                        <li><a href="#free-classes" class="hover-quicklink hover:text-brand-cyan">ফ্রি ক্লাসসমূহ</a></li>
+                    </ul>
+                </div>
+
+                <!-- Contact Detail Cards -->
+                <div class="md:col-span-2 grid grid-cols-1 sm:grid-cols-2 gap-4">
+                    <!-- Phone -->
+                    <a href="tel:01571513815" class="glass-card p-4 rounded-xl flex items-center space-x-3 hover:border-brand-cyan hover:bg-white/5 transition group">
+                        <div class="w-10 h-10 rounded-lg bg-brand-cyan/10 text-brand-cyan flex items-center justify-center text-lg group-hover:scale-110 transition">
+                            <i class="fa-solid fa-phone"></i>
+                        </div>
+                        <div>
+                            <span class="text-xs text-gray-400 block">মোবাইল নম্বর</span>
+                            <span class="text-white font-bold text-sm group-hover:text-brand-cyan transition">01571513815</span>
+                        </div>
+                    </a>
+
+                    <!-- Email -->
+                    <a href="mailto:abdullahalnaim453@gmail.com" class="glass-card p-4 rounded-xl flex items-center space-x-3 hover:border-brand-cyan hover:bg-white/5 transition group">
+                        <div class="w-10 h-10 rounded-lg bg-brand-purple/20 text-purple-400 flex items-center justify-center text-lg group-hover:scale-110 transition">
+                            <i class="fa-solid fa-envelope"></i>
+                        </div>
+                        <div>
+                            <span class="text-xs text-gray-400 block">অফিসিয়াল ইমেইল</span>
+                            <span class="text-white font-bold text-xs sm:text-sm group-hover:text-brand-cyan transition truncate block max-w-[170px]">abdullahalnaim453@gmail.com</span>
+                        </div>
+                    </a>
+
+                    <!-- Location -->
+                    <div class="glass-card p-4 rounded-xl flex items-center space-x-3 hover:border-brand-cyan hover:bg-white/5 transition group sm:col-span-2">
+                        <div class="w-10 h-10 rounded-lg bg-amber-500/20 text-amber-400 flex items-center justify-center text-lg group-hover:scale-110 transition">
+                            <i class="fa-solid fa-location-dot"></i>
+                        </div>
+                        <div>
+                            <span class="text-xs text-gray-400 block">ক্যাম্পাস / অফিস</span>
+                            <span class="text-white font-bold text-sm group-hover:text-brand-cyan transition">হাজী মোহাম্মদ দানেশ বিজ্ঞান ও প্রযুক্তি বিশ্ববিদ্যালয় (HSTU), দিনাজপুর</span>
+                        </div>
+                    </div>
+                </div>
+
+            </div>
+
+            <div class="mt-8 pt-2 text-center text-xs text-gray-500 flex flex-col sm:flex-row justify-between items-center gap-4">
+                <p>&copy; 2026 BASIC TO BOSS. All Rights Reserved. Founded by Abdullah Al Naim (HSTU Ag).</p>
+                <div class="space-x-4">
+                    <a href="#home" class="hover:text-gray-300">Privacy Policy</a>
+                    <a href="#home" class="hover:text-gray-300">Terms of Service</a>
+                </div>
+            </div>
+        </div>
+    </footer>
+
+
+    <!-- 1. AUTH MODAL (Login / Register) -->
+    <div id="authModal" class="fixed inset-0 z-50 hidden bg-black/80 backdrop-blur-md flex items-center justify-center p-4">
+        <div class="glass-panel w-full max-w-md p-6 sm:p-8 rounded-3xl border border-white/10 relative shadow-2xl">
+            <button onclick="closeAuthModal()" class="absolute top-4 right-4 text-gray-400 hover:text-white p-2">
+                <i class="fa-solid fa-xmark text-xl"></i>
+            </button>
+
+            <!-- Tabs -->
+            <div class="flex border-b border-white/10 mb-6">
+                <button id="loginTabBtn" onclick="switchAuthTab('login')" class="flex-1 pb-3 font-bold text-brand-cyan border-b-2 border-brand-cyan text-center">লগইন (Login)</button>
+                <button id="registerTabBtn" onclick="switchAuthTab('register')" class="flex-1 pb-3 font-bold text-gray-400 text-center">রেজিস্ট্রেশন</button>
+            </div>
+
+            <!-- Login Form -->
+            <form id="loginForm" onsubmit="handleLogin(event)" class="space-y-4">
+                <div>
+                    <label class="block text-xs font-semibold text-gray-300 mb-1">ফোন নম্বর / ইমেইল</label>
+                    <input type="text" id="loginId" required placeholder="01571513815" class="w-full glass-card px-4 py-3 rounded-xl text-white text-sm border border-white/10 focus:border-brand-cyan outline-none">
+                </div>
+                <div>
+                    <label class="block text-xs font-semibold text-gray-300 mb-1">পাসওয়ার্ড</label>
+                    <input type="password" id="loginPass" required placeholder="••••••••" class="w-full glass-card px-4 py-3 rounded-xl text-white text-sm border border-white/10 focus:border-brand-cyan outline-none">
+                </div>
+                <button type="submit" class="w-full bg-gradient-to-r from-brand-cyan to-teal-400 text-brand-dark py-3.5 rounded-xl font-bold hover:shadow-lg transition">
+                    প্রবেশ করুন
+                </button>
+            </form>
+
+            <!-- Register Form -->
+            <form id="registerForm" onsubmit="handleRegister(event)" class="space-y-4 hidden">
+                <div>
+                    <label class="block text-xs font-semibold text-gray-300 mb-1">শিক্ষার্থীর নাম</label>
+                    <input type="text" id="regName" required placeholder="মোঃ সাকিল আহমেদ" class="w-full glass-card px-4 py-3 rounded-xl text-white text-sm border border-white/10 focus:border-brand-cyan outline-none">
+                </div>
+                <div>
+                    <label class="block text-xs font-semibold text-gray-300 mb-1">ফোন নম্বর</label>
+                    <input type="tel" id="regPhone" required placeholder="01571513815" class="w-full glass-card px-4 py-3 rounded-xl text-white text-sm border border-white/10 focus:border-brand-cyan outline-none">
+                </div>
+                <div>
+                    <label class="block text-xs font-semibold text-gray-300 mb-1">শ্রেনী (Class)</label>
+                    <select id="regClass" class="w-full glass-card px-4 py-3 rounded-xl text-white text-sm border border-white/10 focus:border-brand-cyan outline-none">
+                        <option value="Class 5-8">Class 5 - 8</option>
+                        <option value="SSC Candidate">SSC Candidate</option>
+                        <option value="HSC Candidate">HSC Candidate</option>
+                        <option value="Admission Seekers">Admission Seekers (Varsity/Agri)</option>
+                    </select>
+                </div>
+                <div>
+                    <label class="block text-xs font-semibold text-gray-300 mb-1">পাসওয়ার্ড সেট করুন</label>
+                    <input type="password" id="regPass" required placeholder="••••••••" class="w-full glass-card px-4 py-3 rounded-xl text-white text-sm border border-white/10 focus:border-brand-cyan outline-none">
+                </div>
+                <button type="submit" class="w-full bg-gradient-to-r from-brand-cyan to-teal-400 text-brand-dark py-3.5 rounded-xl font-bold hover:shadow-lg transition">
+                    রেজিস্ট্রেশন নিশ্চিত করুন
+                </button>
+            </form>
+        </div>
+    </div>
+
+    <!-- 2. DETAILED STUDENT PANEL DASHBOARD MODAL -->
+    <div id="studentPanelModal" class="fixed inset-0 z-50 hidden bg-black/85 backdrop-blur-md flex items-center justify-center p-4">
+        <div class="glass-panel w-full max-w-4xl p-6 sm:p-8 rounded-3xl border border-brand-cyan/30 relative shadow-2xl max-h-[90vh] overflow-y-auto custom-scrollbar">
+            <button onclick="closeStudentPanel()" class="absolute top-4 right-4 text-gray-400 hover:text-white p-2">
+                <i class="fa-solid fa-xmark text-xl"></i>
+            </button>
+
+            <div class="flex flex-col sm:flex-row justify-between items-start sm:items-center pb-6 border-b border-white/10 gap-4">
+                <div class="flex items-center space-x-4">
+                    <div class="w-14 h-14 rounded-2xl bg-brand-cyan/20 border border-brand-cyan/40 text-brand-cyan flex items-center justify-center text-2xl font-bold">
+                        <i class="fa-solid fa-user-graduate"></i>
+                    </div>
+                    <div>
+                        <h3 id="studentDashName" class="text-2xl font-black text-white">শিক্ষার্থীর নাম</h3>
+                        <p id="studentDashPhone" class="text-xs text-brand-cyan font-mono">01571513815</p>
+                    </div>
+                </div>
+                <button onclick="logoutStudent()" class="bg-red-500/20 text-red-400 px-4 py-2 rounded-xl text-xs font-bold border border-red-500/30">
+                    <i class="fa-solid fa-right-from-bracket mr-1"></i> লগআউট
+                </button>
+            </div>
+
+            <!-- Dashboard Content Grid -->
+            <div class="mt-6 space-y-6">
+                
+                <!-- Enrolled Courses -->
+                <div>
+                    <h4 class="text-lg font-bold text-white mb-3 flex items-center">
+                        <i class="fa-solid fa-book-bookmark text-brand-cyan mr-2"></i> আপনার কোর্সসমূহ ও ভর্তির স্ট্যাটাস
+                    </h4>
+                    <div id="studentEnrollList" class="space-y-3">
+                        <!-- Dynamic Student Enrolled Items -->
+                    </div>
+                </div>
+
+                <!-- Unlocked Class Content -->
+                <div class="pt-4 border-t border-white/10">
+                    <h4 class="text-lg font-bold text-white mb-3 flex items-center">
+                        <i class="fa-solid fa-circle-play text-brand-cyan mr-2"></i> আনলককৃত ভিডিও ও নোটস
+                    </h4>
+                    <div class="grid grid-cols-1 sm:grid-cols-2 gap-4">
+                        <a href="#recorded-classes" onclick="closeStudentPanel()" class="glass-card p-4 rounded-xl flex items-center space-x-3 hover:border-brand-cyan transition">
+                            <i class="fa-solid fa-video text-brand-cyan text-2xl"></i>
+                            <div>
+                                <span class="font-bold text-white text-sm block">রেকর্ডেড ক্লাসে যান</span>
+                                <span class="text-xs text-gray-400">সকল ভিডিও এক জায়গায়</span>
+                            </div>
+                        </a>
+                        <a href="#class-notes" onclick="closeStudentPanel()" class="glass-card p-4 rounded-xl flex items-center space-x-3 hover:border-brand-cyan transition">
+                            <i class="fa-solid fa-file-pdf text-brand-gold text-2xl"></i>
+                            <div>
+                                <span class="font-bold text-white text-sm block">ক্লাস নোটস ডাউনলোড</span>
+                                <span class="text-xs text-gray-400">পিডিএফ হ্যান্ডনোট</span>
+                            </div>
+                        </a>
+                    </div>
+                </div>
+
+            </div>
+        </div>
+    </div>
+
+    <!-- 3. PAYMENT INTERFACE MODAL -->
+    <div id="paymentModal" class="fixed inset-0 z-50 hidden bg-black/80 backdrop-blur-md flex items-center justify-center p-4">
+        <div class="glass-panel w-full max-w-lg p-6 sm:p-8 rounded-3xl border border-brand-cyan/30 relative shadow-2xl max-h-[90vh] overflow-y-auto custom-scrollbar">
+            <button onclick="closePaymentModal()" class="absolute top-4 right-4 text-gray-400 hover:text-white p-2">
+                <i class="fa-solid fa-xmark text-xl"></i>
+            </button>
+
+            <div class="text-center mb-6">
+                <span class="text-xs bg-brand-cyan/20 text-brand-cyan px-3 py-1 rounded-full font-bold">নিরাপদ পেমেন্ট গেটওয়ে</span>
+                <h3 id="payCourseTitle" class="text-2xl font-black text-white mt-2">কোর্স নাম</h3>
+                <p class="text-brand-gold font-bold text-xl mt-1">ফি: <span id="payCourseFee">৳ 0</span></p>
+            </div>
+
+            <!-- Payment Methods Info -->
+            <div class="space-y-3 mb-6">
+                <p class="text-xs text-gray-300 font-semibold">নিচের যেকোনো নম্বরে **Send Money** বা **Cash Out** করুন:</p>
+                <div class="p-3 glass-card rounded-xl border border-pink-500/30 flex justify-between items-center">
+                    <span class="font-bold text-pink-400 flex items-center"><i class="fa-solid fa-wallet mr-2"></i> বিকাশ (bKash)</span>
+                    <span class="font-mono text-white text-sm font-bold">01571513815</span>
+                </div>
+                <div class="p-3 glass-card rounded-xl border border-orange-500/30 flex justify-between items-center">
+                    <span class="font-bold text-orange-400 flex items-center"><i class="fa-solid fa-wallet mr-2"></i> নগদ (Nagad)</span>
+                    <span class="font-mono text-white text-sm font-bold">01571513815</span>
+                </div>
+                <div class="p-3 glass-card rounded-xl border border-purple-500/30 flex justify-between items-center">
+                    <span class="font-bold text-purple-400 flex items-center"><i class="fa-solid fa-wallet mr-2"></i> রকেট (Rocket)</span>
+                    <span class="font-mono text-white text-sm font-bold">01571513815</span>
+                </div>
+            </div>
+
+            <!-- TrxID Submission Form -->
+            <form id="paymentForm" onsubmit="handlePaymentSubmit(event)" class="space-y-4">
+                <input type="hidden" id="payCourseId">
+                <div>
+                    <label class="block text-xs font-semibold text-gray-300 mb-1">আপনার নাম</label>
+                    <input type="text" id="payStudentName" required placeholder="মোঃ সাকিল আহমেদ" class="w-full glass-card px-4 py-3 rounded-xl text-white text-sm border border-white/10 focus:border-brand-cyan outline-none">
+                </div>
+                <div>
+                    <label class="block text-xs font-semibold text-gray-300 mb-1">আপনার মোবাইল নাম্বার</label>
+                    <input type="tel" id="payStudentPhone" required placeholder="01571513815" class="w-full glass-card px-4 py-3 rounded-xl text-white text-sm border border-white/10 focus:border-brand-cyan outline-none">
+                </div>
+                <div>
+                    <label class="block text-xs font-semibold text-gray-300 mb-1">পেমেন্ট মেথড সিলেক্ট করুন</label>
+                    <select id="payMethod" class="w-full glass-card px-4 py-3 rounded-xl text-white text-sm border border-white/10 focus:border-brand-cyan outline-none">
+                        <option value="bKash">bKash (বিকাশ)</option>
+                        <option value="Nagad">Nagad (নগদ)</option>
+                        <option value="Rocket">Rocket (রকেট)</option>
+                    </select>
+                </div>
+                <div>
+                    <label class="block text-xs font-semibold text-gray-300 mb-1">Transaction ID (TrxID)</label>
+                    <input type="text" id="payTrxId" required placeholder="e.g. 9J87XXK2" class="w-full glass-card px-4 py-3 rounded-xl text-white text-sm border border-brand-cyan uppercase font-mono font-bold text-brand-cyan outline-none">
+                </div>
+
+                <button type="submit" class="w-full bg-gradient-to-r from-brand-cyan to-teal-400 text-brand-dark py-3.5 rounded-xl font-bold hover:shadow-lg transition">
+                    পেমেন্ট কনফার্ম করুন <i class="fa-solid fa-circle-check ml-2"></i>
+                </button>
+            </form>
+        </div>
+    </div>
+
+    <!-- 4. ADMIN PANEL MODAL (With Custom Password Config) -->
+    <div id="adminModal" class="fixed inset-0 z-50 hidden bg-black/85 backdrop-blur-md flex items-center justify-center p-4">
+        <div class="glass-panel w-full max-w-5xl p-6 sm:p-8 rounded-3xl border border-white/20 relative shadow-2xl max-h-[90vh] flex flex-col">
+            <button onclick="closeAdminModal()" class="absolute top-4 right-4 text-gray-400 hover:text-white p-2">
+                <i class="fa-solid fa-xmark text-xl"></i>
+            </button>
+
+            <!-- Admin Password Login View -->
+            <div id="adminPassView" class="p-8 text-center max-w-md mx-auto my-auto w-full">
+                <div class="w-16 h-16 rounded-2xl bg-brand-cyan/20 text-brand-cyan flex items-center justify-center text-3xl mx-auto mb-4">
+                    <i class="fa-solid fa-lock"></i>
+                </div>
+                <h3 class="text-2xl font-black text-white mb-2">অ্যাডমিন প্রবেশাধিকার</h3>
+                <p class="text-xs text-gray-400 mb-6">পাসওয়ার্ড প্রদান করে অ্যাডমিন প্যানেলে প্রবেশ করুন (Default: admin123)</p>
+                <form onsubmit="handleAdminLogin(event)" class="space-y-4">
+                    <input type="password" id="adminPassInput" required placeholder="পাসওয়ার্ড লিখুন" class="w-full glass-card px-4 py-3 rounded-xl text-white text-center border border-white/10 focus:border-brand-cyan outline-none">
+                    <button type="submit" class="w-full bg-brand-cyan text-brand-dark py-3 rounded-xl font-bold">লগইন</button>
+                </form>
+            </div>
+
+            <!-- Admin Dashboard Content -->
+            <div id="adminDashView" class="hidden flex-1 flex flex-col overflow-hidden">
+                <div class="flex flex-col sm:flex-row justify-between items-start sm:items-center pb-4 border-b border-white/10 gap-4">
+                    <div>
+                        <h3 class="text-2xl font-black text-white flex items-center">
+                            <i class="fa-solid fa-user-shield text-brand-cyan mr-2"></i> অ্যাডমিন কন্ট্রোল প্যানেল
+                        </h3>
+                        <p class="text-xs text-gray-400">BASIC TO BOSS ম্যানেজমেন্ট ড্যাশবোর্ড</p>
+                    </div>
+                    <button onclick="logoutAdmin()" class="bg-red-500/20 text-red-400 px-4 py-2 rounded-xl text-xs font-bold border border-red-500/30">লগআউট</button>
+                </div>
+
+                <!-- Admin Tabs -->
+                <div class="flex space-x-2 my-4 border-b border-white/10 overflow-x-auto pb-2 custom-scrollbar">
+                    <button onclick="switchAdminTab('enrolls')" id="tabBtnEnrolls" class="px-4 py-2 rounded-xl text-sm font-bold bg-brand-cyan text-brand-dark whitespace-nowrap">ভর্তি আবেদন (TrxIDs)</button>
+                    <button onclick="switchAdminTab('videos')" id="tabBtnVideos" class="px-4 py-2 rounded-xl text-sm font-bold glass-card text-gray-300 hover:text-white whitespace-nowrap">ভিডিও আপলোড</button>
+                    <button onclick="switchAdminTab('notes')" id="tabBtnNotes" class="px-4 py-2 rounded-xl text-sm font-bold glass-card text-gray-300 hover:text-white whitespace-nowrap">নোটস ফাইল আপলোড</button>
+                    <button onclick="switchAdminTab('queries')" id="tabBtnQueries" class="px-4 py-2 rounded-xl text-sm font-bold glass-card text-gray-300 hover:text-white whitespace-nowrap">শিক্ষার্থীদের মেসেজ</button>
+                    <button onclick="switchAdminTab('settings')" id="tabBtnSettings" class="px-4 py-2 rounded-xl text-sm font-bold glass-card text-gray-300 hover:text-white whitespace-nowrap"><i class="fa-solid fa-key mr-1"></i> পাসওয়ার্ড সেটিংস</button>
+                </div>
+
+                <!-- Admin Content Views -->
+                <div class="flex-1 overflow-y-auto custom-scrollbar space-y-6 pt-2">
+                    
+                    <!-- 1. Enrollments List -->
+                    <div id="adminTabEnrolls">
+                        <h4 class="text-lg font-bold text-white mb-4">সিরিয়াল অনুযায়ী ভর্তি আবেদনসমূহ</h4>
+                        <div class="overflow-x-auto">
+                            <table class="w-full text-left text-sm text-gray-300">
+                                <thead class="bg-slate-800 text-xs uppercase text-brand-cyan">
+                                    <tr>
+                                        <th class="p-3">#Serial</th>
+                                        <th class="p-3">শিক্ষার্থীর নাম</th>
+                                        <th class="p-3">ফোন</th>
+                                        <th class="p-3">কোর্স</th>
+                                        <th class="p-3">মেথড</th>
+                                        <th class="p-3">TrxID</th>
+                                        <th class="p-3">স্ট্যাটাস</th>
+                                        <th class="p-3">অ্যাকশন</th>
+                                    </tr>
+                                </thead>
+                                <tbody id="adminEnrollsTable">
+                                    <!-- Dynamic Rows -->
+                                </tbody>
+                            </table>
+                        </div>
+                    </div>
+
+                    <!-- 2. Video Upload Form -->
+                    <div id="adminTabVideos" class="hidden space-y-6">
+                        <form onsubmit="handleAddVideo(event)" class="glass-card p-6 rounded-2xl border border-white/10 space-y-4 max-w-xl">
+                            <h4 class="font-bold text-white text-lg">নতুন ভিডিও লেকচার যোগ করুন (YouTube)</h4>
+                            <div>
+                                <label class="block text-xs font-semibold text-gray-300 mb-1">ভিডিও টাইটেল</label>
+                                <input type="text" id="vidTitle" required placeholder="অধ্যায় ১: ভৌত রাশি ও পরিমাপ" class="w-full glass-card px-4 py-2.5 rounded-xl text-white text-sm border border-white/10 outline-none">
+                            </div>
+                            <div class="grid grid-cols-2 gap-4">
+                                <div>
+                                    <label class="block text-xs font-semibold text-gray-300 mb-1">বিষয় (Subject)</label>
+                                    <select id="vidSubject" class="w-full glass-card px-4 py-2.5 rounded-xl text-white text-sm border border-white/10 outline-none">
+                                        <option value="physics">Physics</option>
+                                        <option value="chemistry">Chemistry</option>
+                                        <option value="math">Math</option>
+                                        <option value="agriculture">Agri Science</option>
+                                        <option value="english">English</option>
+                                    </select>
+                                </div>
+                                <div>
+                                    <label class="block text-xs font-semibold text-gray-300 mb-1">টাইপ</label>
+                                    <select id="vidType" class="w-full glass-card px-4 py-2.5 rounded-xl text-white text-sm border border-white/10 outline-none">
+                                        <option value="recorded">Recorded Class</option>
+                                        <option value="free">Free Class</option>
+                                    </select>
+                                </div>
+                            </div>
+                            <div>
+                                <label class="block text-xs font-semibold text-gray-300 mb-1">YouTube Video URL / Embed Link</label>
+                                <input type="url" id="vidUrl" required placeholder="https://www.youtube.com/watch?v=..." class="w-full glass-card px-4 py-2.5 rounded-xl text-white text-sm border border-white/10 outline-none">
+                            </div>
+                            <button type="submit" class="bg-brand-cyan text-brand-dark font-bold px-6 py-2.5 rounded-xl">পাবলিশ করুন</button>
+                        </form>
+                    </div>
+
+                    <!-- 3. Notes Upload Form -->
+                    <div id="adminTabNotes" class="hidden space-y-6">
+                        <form onsubmit="handleAddNote(event)" class="glass-card p-6 rounded-2xl border border-white/10 space-y-4 max-w-xl">
+                            <h4 class="font-bold text-white text-lg">নতুন ক্লাস নোটস / PDF আপলোড করুন</h4>
+                            <div>
+                                <label class="block text-xs font-semibold text-gray-300 mb-1">নোটস শিরোনাম</label>
+                                <input type="text" id="noteTitle" required placeholder="পদার্থবিজ্ঞান ১ম পত্র হ্যান্ডনোট" class="w-full glass-card px-4 py-2.5 rounded-xl text-white text-sm border border-white/10 outline-none">
+                            </div>
+                            <div>
+                                <label class="block text-xs font-semibold text-gray-300 mb-1">অধ্যায় / বিষয়</label>
+                                <input type="text" id="noteChapter" required placeholder="অধ্যায় ৩: গতিবিদ্যা" class="w-full glass-card px-4 py-2.5 rounded-xl text-white text-sm border border-white/10 outline-none">
+                            </div>
+                            <div>
+                                <label class="block text-xs font-semibold text-gray-300 mb-1">Drive / File Download URL</label>
+                                <input type="url" id="noteUrl" required placeholder="https://drive.google.com/..." class="w-full glass-card px-4 py-2.5 rounded-xl text-white text-sm border border-white/10 outline-none">
+                            </div>
+                            <button type="submit" class="bg-brand-cyan text-brand-dark font-bold px-6 py-2.5 rounded-xl">নোট যুক্ত করুন</button>
+                        </form>
+                    </div>
+
+                    <!-- 4. Queries List -->
+                    <div id="adminTabQueries" class="hidden space-y-4">
+                        <h4 class="text-lg font-bold text-white mb-4">শিক্ষার্থীদের মেসেজ ও প্রশ্নসমূহ</h4>
+                        <div id="adminQueriesList" class="space-y-3">
+                            <!-- Dynamic Queries -->
+                        </div>
+                    </div>
+
+                    <!-- 5. Change Admin Password -->
+                    <div id="adminTabSettings" class="hidden space-y-4">
+                        <form onsubmit="handleAdminChangePass(event)" class="glass-card p-6 rounded-2xl border border-white/10 space-y-4 max-w-md">
+                            <h4 class="font-bold text-white text-lg">কাস্টম অ্যাডমিন পাসওয়ার্ড পরিবর্তন</h4>
+                            <div>
+                                <label class="block text-xs font-semibold text-gray-300 mb-1">নতুন পাসওয়ার্ড</label>
+                                <input type="password" id="newAdminPass" required placeholder="নতুন পাসওয়ার্ড লিখুন" class="w-full glass-card px-4 py-2.5 rounded-xl text-white text-sm border border-white/10 outline-none">
+                            </div>
+                            <button type="submit" class="bg-brand-cyan text-brand-dark font-bold px-6 py-2.5 rounded-xl">পাসওয়ার্ড সেভ করুন</button>
+                        </form>
+                    </div>
+
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- 5. FOUNDER CV MODAL -->
+    <div id="cvModal" class="fixed inset-0 z-50 hidden bg-black/80 backdrop-blur-md flex items-center justify-center p-4">
+        <div class="glass-panel w-full max-w-2xl p-6 sm:p-8 rounded-3xl border border-white/20 relative shadow-2xl max-h-[90vh] overflow-y-auto custom-scrollbar">
+            <button onclick="closeCvModal()" class="absolute top-4 right-4 text-gray-400 hover:text-white p-2">
+                <i class="fa-solid fa-xmark text-xl"></i>
+            </button>
+
+            <div class="text-center pb-6 border-b border-white/10">
+                <h3 class="text-2xl font-black text-white">CURRICULUM VITAE</h3>
+                <p class="text-brand-cyan font-bold">Abdullah Al Naim</p>
+                <p class="text-xs text-gray-400">Founder & CEO, BASIC TO BOSS</p>
+            </div>
+
+            <div class="py-6 space-y-6 text-sm text-gray-300">
+                <div>
+                    <h4 class="font-bold text-white border-l-4 border-brand-cyan pl-3 mb-2">Education Background</h4>
+                    <p class="font-semibold text-white">B.Sc. in Agriculture (Honours)</p>
+                    <p class="text-xs text-gray-400">Faculty of Agriculture, Hajee Mohammad Danesh Science & Technology University (HSTU), Dinajpur.</p>
+                </div>
+
+                <div>
+                    <h4 class="font-bold text-white border-l-4 border-brand-cyan pl-3 mb-2">Teaching Experience</h4>
+                    <ul class="list-disc list-inside space-y-1 text-xs">
+                        <li>Founder and Lead Instructor at BASIC TO BOSS Ed-Tech since 2022.</li>
+                        <li>4+ Years of teaching experience in Physics, Math & Agricultural Science.</li>
+                        <li>Guided 10,000+ students across SSC, HSC & Varsity Agri-Cluster admission batches.</li>
+                    </ul>
+                </div>
+
+                <div>
+                    <h4 class="font-bold text-white border-l-4 border-brand-cyan pl-3 mb-2">Key Skills & Expertise</h4>
+                    <div class="flex flex-wrap gap-2 pt-1">
+                        <span class="px-2.5 py-1 bg-white/5 rounded-lg text-xs">Pedagogy</span>
+                        <span class="px-2.5 py-1 bg-white/5 rounded-lg text-xs">Academic Content Creation</span>
+                        <span class="px-2.5 py-1 bg-white/5 rounded-lg text-xs">Agricultural Science Prep</span>
+                    </div>
+                </div>
+            </div>
+
+            <div class="pt-4 border-t border-white/10 flex justify-end">
+                <button onclick="alert('CV ডাউনলোড শুরু হয়েছে...')" class="bg-brand-cyan text-brand-dark px-6 py-2.5 rounded-xl font-bold text-sm">
+                    <i class="fa-solid fa-download mr-2"></i> PDF ডাউনলোড করুন
+                </button>
+            </div>
+        </div>
+    </div>
+
+    <!-- JAVASCRIPT APP LOGIC -->
+    <script>
+        // Default Mock Data & LocalStorage Initialization
+        const defaultCourses = [
+            { id: 'c1', category: 'class5-8', title: 'Class 6-8 Math & Science Masterclass', fee: 1500, img: 'https://images.unsplash.com/photo-1635070041078-e363dbe005cb?auto=format&fit=crop&w=600&q=80', desc: 'বেসিক মজবুত করার জন্য বিশেষ ফাউন্ডেশন কোর্স' },
+            { id: 'c2', category: 'ssc', title: 'SSC Physics & Chemistry Special Batch', fee: 2500, img: 'https://images.unsplash.com/photo-1532094349884-543bc11b234d?auto=format&fit=crop&w=600&q=80', desc: 'A+ নিশ্চিত করার জন্য ফুল সিলেবাস কাভারেজ' },
+            { id: 'c3', category: 'hsc', title: 'HSC Higher Math & Physics Boss Batch', fee: 3200, img: 'https://images.unsplash.com/photo-1509228468518-180dd4864904?auto=format&fit=crop&w=600&q=80', desc: 'এইচএসসি বেসিক টু এডভান্সড মাস্টার ক্লাস' },
+            { id: 'c4', category: 'admission', title: 'Varsity & Agri-Cluster Admission Special', fee: 4000, img: 'https://images.unsplash.com/photo-1523240795612-9a054b0db644?auto=format&fit=crop&w=600&q=80', desc: 'কৃষি গুচ্ছ ও ভার্সিটি ক ইউনিট এডমিশন প্রস্তুতি' }
+        ];
+
+        const defaultVideos = [
+            { id: 'v1', title: 'পদার্থবিজ্ঞান ১ম পত্র: গতিবিদ্যা (Kinematics)', subject: 'physics', type: 'recorded', url: 'https://www.youtube.com/embed/dQw4w9WgXcQ' },
+            { id: 'v2', title: 'রসায়ন: পর্যায় সারণি সহজ টেকনিক', subject: 'chemistry', type: 'recorded', url: 'https://www.youtube.com/embed/dQw4w9WgXcQ' },
+            { id: 'v3', title: 'English Masterclass: Right Form of Verbs', subject: 'english', type: 'free', url: 'https://www.youtube.com/embed/dQw4w9WgXcQ' },
+            { id: 'v4', title: 'কৃষি গুচ্ছ স্পেশাল: কৃষি বিজ্ঞান বেসিক', subject: 'agriculture', type: 'recorded', url: 'https://www.youtube.com/embed/dQw4w9WgXcQ' }
+        ];
+
+        const defaultNotes = [
+            { id: 'n1', title: 'পদার্থবিজ্ঞান সকল সূত্রাবলী PDF', chapter: 'অধ্যায় ১-১০', url: '#' },
+            { id: 'n2', title: 'উচ্চতর গণিত ত্রিকোণমিতি শর্টকাট', chapter: 'অধ্যায় ৭', url: '#' },
+            { id: 'n3', title: 'কৃষি গুচ্ছ এডমিশন স্পেশাল শিট', chapter: 'কৃষি প্রযুক্তি ও বায়োলজি', url: '#' }
+        ];
+
+        // Load State from LocalStorage
+        let appState = {
+            enrollments: JSON.parse(localStorage.getItem('btb_enrolls')) || [],
+            videos: JSON.parse(localStorage.getItem('btb_videos')) || defaultVideos,
+            notes: JSON.parse(localStorage.getItem('btb_notes')) || defaultNotes,
+            queries: JSON.parse(localStorage.getItem('btb_queries')) || [],
+            currentUser: JSON.parse(localStorage.getItem('btb_user')) || null,
+            adminPassword: localStorage.getItem('btb_admin_pass') || 'admin123',
+            isAdmin: false
+        };
+
+        // Initialize App
+        window.onload = function() {
+            renderCourses('all');
+            renderRecordedClasses();
+            renderClassNotes();
+            renderFreeClasses();
+            updateAuthNav();
+        };
+
+        // Mobile Menu Drawer Toggle
+        function toggleMobileMenu() {
+            const drawer = document.getElementById('mobileDrawer');
+            drawer.classList.toggle('hidden');
+        }
+
+        // Render Courses
+        function renderCourses(category) {
+            const container = document.getElementById('courseContainer');
+            container.innerHTML = '';
+
+            const filtered = category === 'all' ? defaultCourses : defaultCourses.filter(c => c.category === category);
+
+            filtered.forEach(course => {
+                const card = document.createElement('div');
+                card.className = 'glass-panel rounded-2xl overflow-hidden border border-white/10 hover:border-brand-cyan transition duration-300 flex flex-col justify-between group';
+                card.innerHTML = `
+                    <div>
+                        <div class="relative h-44 overflow-hidden">
+                            <img src="${course.img}" alt="${course.title}" class="w-full h-full object-cover group-hover:scale-105 transition duration-500">
+                            <span class="absolute top-3 right-3 bg-brand-cyan text-brand-dark font-extrabold text-xs px-2.5 py-1 rounded-full uppercase tracking-wider">${course.category}</span>
+                        </div>
+                        <div class="p-5">
+                            <h3 class="font-bold text-white text-lg leading-snug group-hover:text-brand-cyan transition">${course.title}</h3>
+                            <p class="text-xs text-gray-400 mt-2">${course.desc}</p>
+                            
+                            <ul class="mt-4 space-y-1.5 text-xs text-gray-300">
+                                <li class="flex items-center"><i class="fa-solid fa-circle-check text-brand-cyan mr-2"></i> ৫০+ এইচডি ভিডিও লেকচার</li>
+                                <li class="flex items-center"><i class="fa-solid fa-circle-check text-brand-cyan mr-2"></i> অধ্যায় ভিত্তিক পিডিএফ নোটস</li>
+                                <li class="flex items-center"><i class="fa-solid fa-circle-check text-brand-cyan mr-2"></i> প্রাকটিস এক্সাম ও কুইজ</li>
+                            </ul>
+                        </div>
+                    </div>
+                    <div class="p-5 pt-0 border-t border-white/5 flex items-center justify-between mt-4">
+                        <div>
+                            <span class="text-xs text-gray-400 block">কোর্স ফি</span>
+                            <span class="text-xl font-extrabold text-brand-gold">৳ ${course.fee}</span>
+                        </div>
+                        <button onclick="openPaymentModal('${course.id}', '${course.title}', ${course.fee})" class="bg-gradient-to-r from-brand-cyan to-teal-400 text-brand-dark px-4 py-2.5 rounded-xl font-bold text-sm hover:shadow-lg transition">
+                            ভর্তি হন <i class="fa-solid fa-arrow-right ml-1"></i>
+                        </button>
+                    </div>
+                `;
+                container.appendChild(card);
+            });
+        }
+
+        function filterCourses(cat) {
+            document.querySelectorAll('.course-tab-btn').forEach(btn => {
+                btn.classList.remove('bg-brand-cyan', 'text-brand-dark');
+                btn.classList.add('glass-card', 'text-gray-300');
+            });
+            event.target.classList.remove('glass-card', 'text-gray-300');
+            event.target.classList.add('bg-brand-cyan', 'text-brand-dark');
+            renderCourses(cat);
+        }
+
+        // Render Recorded Classes
+        function renderRecordedClasses() {
+            const container = document.getElementById('recordedClassGrid');
+            const subject = document.getElementById('recSubjectFilter').value;
+            container.innerHTML = '';
+
+            const list = appState.videos.filter(v => (subject === 'all' || v.subject === subject) && v.type === 'recorded');
+
+            if(list.length === 0) {
+                container.innerHTML = `<p class="text-gray-400 col-span-full text-center py-8">কোনো ক্লাসের ভিডিও পাওয়া যায়নি।</p>`;
+                return;
+            }
+
+            list.forEach(v => {
+                const card = document.createElement('div');
+                card.className = 'glass-panel rounded-2xl overflow-hidden border border-white/10';
+                card.innerHTML = `
+                    <div class="aspect-video w-full bg-slate-900">
+                        <iframe src="${v.url}" class="w-full h-full border-0" allowfullscreen></iframe>
+                    </div>
+                    <div class="p-4">
+                        <span class="text-xs text-brand-cyan uppercase font-bold tracking-wider">${v.subject}</span>
+                        <h4 class="font-bold text-white text-base mt-1">${v.title}</h4>
+                    </div>
+                `;
+                container.appendChild(card);
+            });
+        }
+
+        // Render Class Notes
+        function renderClassNotes() {
+            const container = document.getElementById('notesContainer');
+            container.innerHTML = '';
+
+            appState.notes.forEach(note => {
+                const card = document.createElement('div');
+                card.className = 'glass-card p-5 rounded-2xl border border-white/10 flex items-center justify-between hover:border-brand-gold transition';
+                card.innerHTML = `
+                    <div class="flex items-center space-x-4">
+                        <div class="w-12 h-12 rounded-xl bg-amber-500/10 text-brand-gold flex items-center justify-center text-2xl">
+                            <i class="fa-solid fa-file-pdf"></i>
+                        </div>
+                        <div>
+                            <h4 class="font-bold text-white text-sm">${note.title}</h4>
+                            <span class="text-xs text-gray-400">${note.chapter}</span>
+                        </div>
+                    </div>
+                    <a href="${note.url}" target="_blank" onclick="alert('নোট ফাইল ডাউনলোড হচ্ছে...')" class="bg-brand-gold/20 text-brand-gold hover:bg-brand-gold hover:text-slate-950 p-2.5 rounded-xl transition">
+                        <i class="fa-solid fa-download text-lg"></i>
+                    </a>
+                `;
+                container.appendChild(card);
+            });
+        }
+
+        // Render Free Classes
+        function renderFreeClasses() {
+            const container = document.getElementById('freeClassGrid');
+            container.innerHTML = '';
+
+            const list = appState.videos.filter(v => v.type === 'free');
+
+            list.forEach(v => {
+                const card = document.createElement('div');
+                card.className = 'glass-panel rounded-2xl overflow-hidden border border-brand-cyan/30';
+                card.innerHTML = `
+                    <div class="aspect-video w-full bg-slate-900">
+                        <iframe src="${v.url}" class="w-full h-full border-0" allowfullscreen></iframe>
+                    </div>
+                    <div class="p-4">
+                        <span class="bg-brand-cyan/20 text-brand-cyan text-xs font-bold px-2 py-0.5 rounded">FREE DEMO</span>
+                        <h4 class="font-bold text-white text-base mt-2">${v.title}</h4>
+                    </div>
+                `;
+                container.appendChild(card);
+            });
+        }
+
+        // Payment Modal Controls
+        function openPaymentModal(id, title, fee) {
+            document.getElementById('payCourseId').value = id;
+            document.getElementById('payCourseTitle').innerText = title;
+            document.getElementById('payCourseFee').innerText = '৳ ' + fee;
+            document.getElementById('paymentModal').classList.remove('hidden');
+        }
+
+        function closePaymentModal() {
+            document.getElementById('paymentModal').classList.add('hidden');
+        }
+
+        function handlePaymentSubmit(e) {
+            e.preventDefault();
+            const name = document.getElementById('payStudentName').value;
+            const phone = document.getElementById('payStudentPhone').value;
+            const method = document.getElementById('payMethod').value;
+            const trx = document.getElementById('payTrxId').value;
+            const courseTitle = document.getElementById('payCourseTitle').innerText;
+
+            const newEnrollment = {
+                serial: appState.enrollments.length + 1,
+                name,
+                phone,
+                method,
+                trx,
+                course: courseTitle,
+                status: 'Pending',
+                date: new Date().toLocaleDateString()
+            };
+
+            appState.enrollments.push(newEnrollment);
+            localStorage.setItem('btb_enrolls', JSON.stringify(appState.enrollments));
+
+            alert('পেমেন্ট ট্রানজেকশন সফলভাবে সাবমিট হয়েছে! অ্যাডমিন ভেরিফাই করে আপনার কোর্স আনলক করে দিবেন।');
+            closePaymentModal();
+        }
+
+        // Student Panel Dashboard
+        function openStudentPanel() {
+            if(!appState.currentUser) {
+                openAuthModal();
+                return;
+            }
+            document.getElementById('studentDashName').innerText = appState.currentUser.name;
+            document.getElementById('studentDashPhone').innerText = appState.currentUser.phone;
+
+            const container = document.getElementById('studentEnrollList');
+            container.innerHTML = '';
+
+            const myEnrolls = appState.enrollments.filter(e => e.phone === appState.currentUser.phone);
+
+            if(myEnrolls.length === 0) {
+                container.innerHTML = `<p class="text-gray-400 text-sm">আপনার কোনো কোর্সে ভর্তি আবেদন পাওয়া যায়নি। পছন্দের কোর্সে ভর্তি হন।</p>`;
+            } else {
+                myEnrolls.forEach(e => {
+                    const div = document.createElement('div');
+                    div.className = 'glass-card p-4 rounded-xl border border-white/10 flex justify-between items-center';
+                    div.innerHTML = `
+                        <div>
+                            <h5 class="font-bold text-white text-sm">${e.course}</h5>
+                            <p class="text-xs text-gray-400">TrxID: <span class="font-mono text-brand-gold">${e.trx}</span> (${e.method})</p>
+                        </div>
+                        <span class="px-3 py-1 rounded-full text-xs font-bold ${e.status === 'Approved' ? 'bg-emerald-500/20 text-emerald-400' : 'bg-amber-500/20 text-amber-400'}">${e.status}</span>
+                    `;
+                    container.appendChild(div);
+                });
+            }
+
+            document.getElementById('studentPanelModal').classList.remove('hidden');
+        }
+
+        function closeStudentPanel() {
+            document.getElementById('studentPanelModal').classList.add('hidden');
+        }
+
+        function logoutStudent() {
+            appState.currentUser = null;
+            localStorage.removeItem('btb_user');
+            updateAuthNav();
+            closeStudentPanel();
+        }
+
+        // Auth Modal Controls
+        function openAuthModal() {
+            document.getElementById('authModal').classList.remove('hidden');
+        }
+
+        function closeAuthModal() {
+            document.getElementById('authModal').classList.add('hidden');
+        }
+
+        function switchAuthTab(tab) {
+            if(tab === 'login') {
+                document.getElementById('loginForm').classList.remove('hidden');
+                document.getElementById('registerForm').classList.add('hidden');
+                document.getElementById('loginTabBtn').className = 'flex-1 pb-3 font-bold text-brand-cyan border-b-2 border-brand-cyan text-center';
+                document.getElementById('registerTabBtn').className = 'flex-1 pb-3 font-bold text-gray-400 text-center';
+            } else {
+                document.getElementById('loginForm').classList.add('hidden');
+                document.getElementById('registerForm').classList.remove('hidden');
+                document.getElementById('registerTabBtn').className = 'flex-1 pb-3 font-bold text-brand-cyan border-b-2 border-brand-cyan text-center';
+                document.getElementById('loginTabBtn').className = 'flex-1 pb-3 font-bold text-gray-400 text-center';
+            }
+        }
+
+        function handleLogin(e) {
+            e.preventDefault();
+            appState.currentUser = { name: 'শিক্ষার্থী', phone: document.getElementById('loginId').value };
+            localStorage.setItem('btb_user', JSON.stringify(appState.currentUser));
+            updateAuthNav();
+            closeAuthModal();
+            alert('সফলভাবে লগইন হয়েছে!');
+        }
+
+        function handleRegister(e) {
+            e.preventDefault();
+            appState.currentUser = { name: document.getElementById('regName').value, phone: document.getElementById('regPhone').value };
+            localStorage.setItem('btb_user', JSON.stringify(appState.currentUser));
+            updateAuthNav();
+            closeAuthModal();
+            alert('রেজিস্ট্রেশন সম্পূর্ণ হয়েছে!');
+        }
+
+        function updateAuthNav() {
+            const btn = document.getElementById('navAuthBtn');
+            if(appState.currentUser) {
+                btn.innerHTML = `<i class="fa-solid fa-user-check mr-1"></i> ${appState.currentUser.name}`;
+                btn.onclick = openStudentPanel;
+            } else {
+                btn.innerHTML = `<i class="fa-solid fa-user-plus mr-1"></i> লগইন / রেজিস্টার`;
+                btn.onclick = openAuthModal;
+            }
+        }
+
+        // Admin Modal & Operations
+        function openAdminModal() {
+            document.getElementById('adminModal').classList.remove('hidden');
+        }
+
+        function closeAdminModal() {
+            document.getElementById('adminModal').classList.add('hidden');
+        }
+
+        function handleAdminLogin(e) {
+            e.preventDefault();
+            const pass = document.getElementById('adminPassInput').value;
+            if(pass === appState.adminPassword) {
+                appState.isAdmin = true;
+                document.getElementById('adminPassView').classList.add('hidden');
+                document.getElementById('adminDashView').classList.remove('hidden');
+                renderAdminEnrolls();
+            } else {
+                alert('ভুল পাসওয়ার্ড!');
+            }
+        }
+
+        function logoutAdmin() {
+            appState.isAdmin = false;
+            document.getElementById('adminPassView').classList.remove('hidden');
+            document.getElementById('adminDashView').classList.add('hidden');
+        }
+
+        function handleAdminChangePass(e) {
+            e.preventDefault();
+            const newP = document.getElementById('newAdminPass').value;
+            appState.adminPassword = newP;
+            localStorage.setItem('btb_admin_pass', newP);
+            alert('অ্যাডমিন পাসওয়ার্ড সফলভাবে পরিবর্তিত হয়েছে!');
+            e.target.reset();
+        }
+
+        function switchAdminTab(tab) {
+            ['Enrolls', 'Videos', 'Notes', 'Queries', 'Settings'].forEach(t => {
+                document.getElementById('adminTab' + t).classList.add('hidden');
+                document.getElementById('tabBtn' + t).className = 'px-4 py-2 rounded-xl text-sm font-bold glass-card text-gray-300 hover:text-white whitespace-nowrap';
+            });
+
+            const activeTab = tab.charAt(0).toUpperCase() + tab.slice(1);
+            document.getElementById('adminTab' + activeTab).classList.remove('hidden');
+            document.getElementById('tabBtn' + activeTab).className = 'px-4 py-2 rounded-xl text-sm font-bold bg-brand-cyan text-brand-dark whitespace-nowrap';
+
+            if(tab === 'enrolls') renderAdminEnrolls();
+            if(tab === 'queries') renderAdminQueries();
+        }
+
+        function renderAdminEnrolls() {
+            const table = document.getElementById('adminEnrollsTable');
+            table.innerHTML = '';
+
+            if(appState.enrollments.length === 0) {
+                table.innerHTML = `<tr><td colspan="8" class="text-center p-4 text-gray-500">কোনো ভর্তি আবেদন নেই।</td></tr>`;
+                return;
+            }
+
+            appState.enrollments.forEach((e, idx) => {
+                const tr = document.createElement('tr');
+                tr.className = 'border-b border-white/5 hover:bg-white/5';
+                tr.innerHTML = `
+                    <td class="p-3 font-mono text-brand-cyan">#${e.serial}</td>
+                    <td class="p-3 font-bold text-white">${e.name}</td>
+                    <td class="p-3">${e.phone}</td>
+                    <td class="p-3">${e.course}</td>
+                    <td class="p-3"><span class="px-2 py-0.5 rounded text-xs bg-slate-800">${e.method}</span></td>
+                    <td class="p-3 font-mono font-bold text-brand-gold">${e.trx}</td>
+                    <td class="p-3"><span class="px-2 py-0.5 rounded text-xs ${e.status === 'Approved' ? 'bg-emerald-500/20 text-emerald-400' : 'bg-amber-500/20 text-amber-400'}">${e.status}</span></td>
+                    <td class="p-3">
+                        <button onclick="approveEnroll(${idx})" class="bg-emerald-500 text-slate-950 font-bold px-2 py-1 rounded text-xs mr-1">Approve</button>
+                    </td>
+                `;
+                table.appendChild(tr);
+            });
+        }
+
+        function approveEnroll(idx) {
+            appState.enrollments[idx].status = 'Approved';
+            localStorage.setItem('btb_enrolls', JSON.stringify(appState.enrollments));
+            renderAdminEnrolls();
+        }
+
+        function handleAddVideo(e) {
+            e.preventDefault();
+            const title = document.getElementById('vidTitle').value;
+            const subject = document.getElementById('vidSubject').value;
+            const type = document.getElementById('vidType').value;
+            let url = document.getElementById('vidUrl').value;
+
+            if(url.includes('watch?v=')) {
+                url = url.replace('watch?v=', 'embed/');
+            }
+
+            const newVid = { id: 'v' + Date.now(), title, subject, type, url };
+            appState.videos.push(newVid);
+            localStorage.setItem('btb_videos', JSON.stringify(appState.videos));
+
+            alert('ভিডিও সফলভাবে আপলোড হয়েছে!');
+            renderRecordedClasses();
+            renderFreeClasses();
+            e.target.reset();
+        }
+
+        function handleAddNote(e) {
+            e.preventDefault();
+            const title = document.getElementById('noteTitle').value;
+            const chapter = document.getElementById('noteChapter').value;
+            const url = document.getElementById('noteUrl').value;
+
+            appState.notes.push({ id: 'n' + Date.now(), title, chapter, url });
+            localStorage.setItem('btb_notes', JSON.stringify(appState.notes));
+
+            alert('ক্লাস নোটস যোগ করা হয়েছে!');
+            renderClassNotes();
+            e.target.reset();
+        }
+
+        function handleQuerySubmit(e) {
+            const name = document.getElementById('queryName').value;
+            const contact = document.getElementById('queryContact').value;
+            const msg = document.getElementById('queryMessage').value;
+
+            appState.queries.push({ name, contact, msg, date: new Date().toLocaleString() });
+            localStorage.setItem('btb_queries', JSON.stringify(appState.queries));
+        }
+
+        function renderAdminQueries() {
+            const container = document.getElementById('adminQueriesList');
+            container.innerHTML = '';
+
+            if(appState.queries.length === 0) {
+                container.innerHTML = `<p class="text-gray-500 text-sm">কোনো মেসেজ নেই।</p>`;
+                return;
+            }
+
+            appState.queries.forEach(q => {
+                const card = document.createElement('div');
+                card.className = 'glass-card p-4 rounded-xl border border-white/10 space-y-1';
+                card.innerHTML = `
+                    <div class="flex justify-between items-center text-xs text-brand-cyan">
+                        <span class="font-bold text-white">${q.name} (${q.contact})</span>
+                        <span>${q.date}</span>
+                    </div>
+                    <p class="text-sm text-gray-300 mt-1">${q.msg}</p>
+                `;
+                container.appendChild(card);
+            });
+        }
+
+        // FAQ Toggle Logic
+        function toggleFaq(id) {
+            const content = document.getElementById(id);
+            const icon = document.getElementById('icon-' + id);
+            content.classList.toggle('hidden');
+            icon.classList.toggle('rotate-180');
+        }
+
+        // CV Modal Controls
+        function openCvModal() {
+            document.getElementById('cvModal').classList.remove('hidden');
+        }
+
+        function closeCvModal() {
+            document.getElementById('cvModal').classList.add('hidden');
+        }
+    </script>
+
+</body>
+</html>
